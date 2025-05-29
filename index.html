@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Cars - Premium Vehicle Solutions</title>
+    <style>
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Arial',sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        /* Header */
+        header {
+            background-color: #222;
+            padding: 1px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        #logo {
+            height: 100px;
+            width: auto;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #4285F4;
+        }
+        
+        .cta-button {
+            background-color: #4285F4;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        
+        .cta-button:hover {
+            background-color: #3367d6;
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1493238792000-8113da705763?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: #4285F4;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #3367d6;
+            transform: translateY(-3px);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: white;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .section-subtitle {
+            color: #777;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+        
+        .service-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            width: 350px;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: #4285F4;
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        /* Featured Vehicles */
+        .featured {
+            padding: 80px 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .vehicle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 50px auto 0;
+        }
+        
+        .vehicle-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .vehicle-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .vehicle-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .vehicle-info {
+            padding: 20px;
+        }
+        
+        .vehicle-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .vehicle-price {
+            color: #4285F4;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        
+        .vehicle-details {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 20px;
+            background-color: white;
+            text-align: center;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 50px auto 0;
+        }
+        
+        .testimonial-card {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(rgba(66, 133, 244, 0.9), rgba(66, 133, 244, 0.9)), 
+                        url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 50px 20px 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-column h3 {
+            color: #4285F4;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .service-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <img id="logo" src="quickCarLogo.png" alt="Quick Cars Logo">
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="buy.html">Buy</a></li>
+                <li><a href="rent.html">Rent</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="logIn.html" class="cta-button">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Premium Vehicles for Every Journey</h1>
+            <p>Discover the perfect car for your needs with Quick Cars - whether you're looking to buy, rent, or simply explore the best vehicles on the market.</p>
+            <div class="hero-buttons">
+                <a href="buy.html" class="btn btn-primary">Browse Vehicles</a>
+                <a href="rent.html" class="btn btn-secondary">Rent a Car</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">We offer comprehensive vehicle solutions tailored to your needs</p>
+        
+        <div class="service-cards">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-car"></i>
+                </div>
+                <h3>Vehicle Purchase</h3>
+                <p>Find your dream car from our extensive collection of quality vehicles at competitive prices.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-key"></i>
+                </div>
+                <h3>Short-Term Rental</h3>
+                <p>Flexible rental options for your vacations, business trips, or temporary transportation needs.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h3>Long-Term Leasing</h3>
+                <p>Enjoy the benefits of a new car without the commitment of ownership through our leasing programs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Vehicles -->
+    <section class="featured">
+        <h2 class="section-title">Featured Vehicles</h2>
+        <p class="section-subtitle">Explore our most popular models</p>
+        
+        <div class="vehicle-grid">
+            <div class="vehicle-card">
+                <div class="vehicle-image" style="background-image: url('https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="vehicle-info">
+                    <h3>2022 Toyota Camry</h3>
+                    <div class="vehicle-details">
+                        <span><i class="fas fa-tachometer-alt"></i> 12,000 mi</span>
+                        <span><i class="fas fa-cog"></i> Automatic</span>
+                    </div>
+                    <div class="vehicle-price">$24,999</div>
+                    <a href="buy.html" class="btn btn-primary" style="display: block; text-align: center;">View Details</a>
+                </div>
+            </div>
+            
+            <div class="vehicle-card">
+                <div class="vehicle-image" style="background-image: url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="vehicle-info">
+                    <h3>2021 Honda CR-V</h3>
+                    <div class="vehicle-details">
+                        <span><i class="fas fa-tachometer-alt"></i> 18,000 mi</span>
+                        <span><i class="fas fa-cog"></i> Automatic</span>
+                    </div>
+                    <div class="vehicle-price">$26,500</div>
+                    <a href="buy.html" class="btn btn-primary" style="display: block; text-align: center;">View Details</a>
+                </div>
+            </div>
+            
+            <div class="vehicle-card">
+                <div class="vehicle-image" style="background-image: url('https://images.unsplash.com/photo-1493238792000-8113da705763?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="vehicle-info">
+                    <h3>2023 Ford Mustang</h3>
+                    <div class="vehicle-details">
+                        <span><i class="fas fa-tachometer-alt"></i> 5,000 mi</span>
+                        <span><i class="fas fa-cog"></i> Automatic</span>
+                    </div>
+                    <div class="vehicle-price">$39,999</div>
+                    <a href="buy.html" class="btn btn-primary" style="display: block; text-align: center;">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <p class="section-subtitle">Don't just take our word for it</p>
+        
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Quick Cars made buying my first vehicle so easy! Their team was knowledgeable and helped me find the perfect car within my budget."</p>
+                <p class="testimonial-author">- Sarah Johnson</p>
+            </div>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">"I've rented from Quick Cars multiple times for business trips. Their vehicles are always clean, reliable, and reasonably priced."</p>
+                <p class="testimonial-author">- Michael Chen</p>
+            </div>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Excellent customer service! They went above and beyond to ensure I got exactly what I needed. Will definitely be a returning customer."</p>
+                <p class="testimonial-author">- David Rodriguez</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <h2>Ready to Find Your Perfect Vehicle?</h2>
+        <p>Join thousands of satisfied customers who found their dream car with Quick Cars</p>
+        <div style="margin-top: 30px;">
+            <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+            <a href="buy.html" class="btn btn-primary" style="margin-left: 15px;">Browse Inventory</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Quick Cars</h3>
+                <p>Your trusted partner for all vehicle needs. Quality cars, exceptional service.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="buy.html">Buy a Car</a></li>
+                    <li><a href="rent.html">Rent a Car</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Vehicle Purchase</a></li>
+                    <li><a href="#">Short-Term Rental</a></li>
+                    <li><a href="#">Long-Term Leasing</a></li>
+                    <li><a href="#">Vehicle Financing</a></li>
+                    <li><a href="#">Maintenance Services</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Auto Street, City</li>
+                    <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+                    <li><i class="fas fa-envelope"></i> info@quickcars.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 9AM - 7PM</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Quick Cars. All rights reserved.</p>
+            <script>
+                // Search functionality
+                const searchInput = document.getElementById('search-input');
+                const searchResults = document.getElementById('search-results');
+                const names = ['Mercedes-Benz', 'Land Rover', 'Porsche', 'Tesla'];
+            
+                searchInput.addEventListener('input', () => {
+                  const value = searchInput.value.toLowerCase();
+                  const matches = names.filter(name => name.toLowerCase().includes(value));
+                  searchResults.innerHTML = matches.length
+                    ? matches.map(name => `<p>${name}</p>`).join('')
+                    : '<p>No results found</p>';
+                });
+            
+                // Modal functionality
+                function openModal(title, price, image, details) {
+                  // Set main content
+                  document.getElementById('modalTitle').textContent = title;
+                  document.getElementById('modalPrice').textContent = `$${parseInt(price).toLocaleString()}`;
+                  document.getElementById('modalImage').src = image;
+                  document.getElementById('modalImage').alt = title;
+                  
+                  // Set details
+                  document.getElementById('modalYear').textContent = details.year;
+                  document.getElementById('modalMileage').textContent = details.mileage;
+                  document.getElementById('modalTransmission').textContent = details.transmission;
+                  document.getElementById('modalFuel').textContent = details.fuel;
+                  document.getElementById('modalColor').textContent = details.color;
+                  document.getElementById('modalEngine').textContent = details.engine;
+                  document.getElementById('modalHorsepower').textContent = details.horsepower;
+                  document.getElementById('modalSeating').textContent = details.seating;
+                  
+                  // Set features
+                  const featuresContainer = document.getElementById('modalFeatures');
+                  featuresContainer.innerHTML = '';
+                  details.features.forEach(feature => {
+                    const featureElement = document.createElement('span');
+                    featureElement.className = 'feature-tag';
+                    featureElement.textContent = feature;
+                    featuresContainer.appendChild(featureElement);
+                  });
+                  
+                  // Show modal
+                  document.getElementById('carModal').style.display = 'block';
+                  document.body.style.overflow = 'hidden'; // Prevent scrolling
+                }
+            
+                function closeModal() {
+                  document.getElementById('carModal').style.display = 'none';
+                  document.body.style.overflow = 'auto'; // Re-enable scrolling
+                }
+            
+                function buyCar() {
+                  const carName = docume000nt.getElementById('modalTitle').textContent;
+                  alert(`Thank you for your interest in purchasing the ${carName}!\nOur sales team will contact you shortly.`);
+                  closeModal();
+                }
+            
+                function rentCar() {
+                  const carName = document.getElementById('modalTitle').textContent;
+                  alert(`Thank you for your interest in renting the ${carName}!\nOur rental team will contact you shortly.`);
+                  closeModal();
+                }
+            
+                // Close modal when clicking outside
+                window.onclick = function(event) {
+                  const modal = document.getElementById('carModal');
+                  if (event.target == modal) {
+                    closeModal();
+                  }
+                };
+              </script>
+            
+        </div>
+    </footer>
+</body>
+</html>

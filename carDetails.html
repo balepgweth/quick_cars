@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toyota Camry - Quick Cars</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #222;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        #logo {
+            height: 50px;
+            width: auto;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .car-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .car-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .main-image {
+            grid-column: span 2;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+        }
+        
+        .thumbnail {
+            height: 140px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .car-info {
+            padding: 20px;
+        }
+        
+        .car-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .car-price {
+            font-size: 1.8rem;
+            color: #4285F4;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .car-meta {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .meta-item i {
+            margin-right: 10px;
+            color: #4285F4;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .btn-primary {
+            background-color: #4285F4;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #3367d6;
+        }
+        
+        .btn-outline {
+            border: 2px solid #4285F4;
+            color: #4285F4;
+            background: white;
+        }
+        
+        .btn-outline:hover {
+            background-color: #f0f7ff;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .car-detail {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <img id="logo" src="quickCarLogo.png" alt="Quick Cars Logo">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="buy.html">Buy</a>
+            <a href="rent.html">Rent</a>
+            <a href="logIn.html">Login</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="car-detail">
+            <div class="car-gallery">
+                <div class="main-image" style="background-image: url('https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="thumbnail" style="background-image: url('https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                <div class="thumbnail" style="background-image: url('https://images.unsplash.com/photo-1549317661-bd32bbc8de13?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+                <div class="thumbnail" style="background-image: url('https://images.unsplash.com/photo-1494972308805-463bc619d34e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');"></div>
+            </div>
+            
+            <div class="car-info">
+                <h1 class="car-title">2022 Toyota Camry XSE</h1>
+                <div class="car-price">$24,999</div>
+                
+                <div class="car-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>12,000 miles</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-car"></i>
+                        <span>Sedan</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-gas-pump"></i>
+                        <span>Hybrid</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-cog"></i>
+                        <span>Automatic</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-palette"></i>
+                        <span>Midnight Black</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-chair"></i>
+                        <span>Leather Seats</span>
+                    </div>
+                </div>
+                
+                <p>This premium 2022 Toyota Camry XSE comes with all the latest features including navigation system, premium audio, and advanced safety features. Meticulously maintained with full service history.</p>
+                
+                <div class="action-buttons">
+                    <a href="buyPayment.html?car=toyota-camry-2022" class="btn btn-primary">Buy Now</a>
+                    <a href="rentPayment.html?car=toyota-camry-2022" class="btn btn-outline">Rent This Car</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

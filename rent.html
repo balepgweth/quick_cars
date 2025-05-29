@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Cars - Rent Vehicles</title>
+    <style>
+        /* Base Styles - Same as buy page */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 20px;
+            background-color: #222;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #logo {
+            height: 50px;
+            width: auto;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+        }
+
+        nav a.active {
+            color: #4285F4;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        /* Rental Specific Styles */
+        .rental-options {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .rental-type {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .rental-type:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .rental-type h2 {
+            color: #4285F4;
+            margin-top: 0;
+        }
+
+        .rental-type p {
+            color: #666;
+        }
+
+        /* Date Pickers */
+        .date-selection {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .date-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .date-group {
+            flex: 1;
+        }
+
+        .date-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .date-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .search-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-btn:hover {
+            background-color: #3367d6;
+        }
+
+        /* Vehicle Grid - Same as buy page */
+        .vehicle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .vehicle-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .vehicle-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .vehicle-image {
+            height: 180px;
+            background-color: #eee;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .vehicle-info {
+            padding: 20px;
+        }
+
+        .vehicle-info h3 {
+            margin: 0 0 10px;
+            font-size: 18px;
+        }
+
+        .vehicle-price {
+            color: #4285F4;
+            font-weight: bold;
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .price-period {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .vehicle-details {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .rent-btn {
+            display: block;
+            text-align: center;
+            background-color: #4285F4;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .rent-btn:hover {
+            background-color: #3367d6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .rental-options {
+                flex-direction: column;
+            }
+            
+            .date-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .vehicle-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img id="logo" src="quickCarLogo.png" alt="Quick Cars Logo">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="buy.html">Buy</a>
+            <a href="rent.html" class="active">Rent</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Rent Your Perfect Car</h1>
+        
+        <div class="rental-options">
+            <div class="rental-type">
+                <h2>Daily Rental</h2>
+                <p>Perfect for short trips and quick getaways</p>
+            </div>
+            <div class="rental-type">
+                <h2>Weekly Rental</h2>
+                <p>Great for vacations and longer stays</p>
+            </div>
+            <div class="rental-type">
+                <h2>Monthly Rental</h2>
+                <p>Ideal for extended business trips</p>
+            </div>
+        </div>
+        
+        <div class="date-selection">
+            <div class="date-row">
+                <div class="date-group">
+                    <label for="pickup-date">Pick-Up Date</label>
+                    <input type="date" id="pickup-date" name="pickup-date">
+                </div>
+                <div class="date-group">
+                    <label for="dropoff-date">Drop-Off Date</label>
+                    <input type="date" id="dropoff-date" name="dropoff-date">
+                </div>
+            </div>
+            <div class="date-row">
+                <div class="date-group">
+                    <label for="pickup-location">Pick-Up Location</label>
+                    <select id="pickup-location" name="pickup-location">
+                        <option>Select location</option>
+                        <option>Downtown</option>
+                        <option>Airport</option>
+                        <option>Northside</option>
+                        <option>Southside</option>
+                    </select>
+                </div>
+                <div class="date-group">
+                    <label for="vehicle-type">Vehicle Type</label>
+                    <select id="vehicle-type" name="vehicle-type">
+                        <option>All Types</option>
+                        <option>Economy</option>
+                        <option>Standard</option>
+                        <option>SUV</option>
+                        <option>Luxury</option>
+                    </select>
+                </div>
+            </div>
+            <button class="search-btn">Search Available Vehicles</button>
+        </div>
+
+        <div class="vehicle-grid">
+            <!-- Toyota Corolla -->
+            <div class="vehicle-card">
+                <div class="vehicle-image" style="background-image: url('https://images.unsplash.com/photo-1549317661-bd32bbc8de13?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="vehicle-info">
+                    <h3>Toyota Corolla</h3>
+                    <div class="vehicle-details">
+                        <span>Automatic</span>
+                        <span>5 Seats</span>
+                    </div>
+                    <div class="vehicle-price">$49<span class="price-period">/day</span></div>
+                    <a href="#" class="rent-btn">Rent Now</a>
+                </div>
+            </div>
+            
+            <!-- Honda CR-V -->
+            <div class="vehicle-card">
+                <div class="vehicle-image" style="background-image: url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="vehicle-info">
+                    <h3>Honda CR-V</h3>
+                    <div class="vehicle-details">
+                        <span>Automatic</span>
+                        <span>7 Seats</span>
+                    </div>
+                    <div class="vehicle-price">$69<span class="price-period">/day</span></div>
+                    <a href="#" class="rent-btn">Rent Now</a>
+                </div>
+            </div>
+            
+            <!-- Ford Mustang -->
+            <div class="vehicle-card">
+                <div class="vehicle-image" style="background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="vehicle-info">
+                    <h3>Ford Mustang</h3>
+                    <div class="vehicle-details">
+                        <span>Automatic</span>
+                        <span>4 Seats</span>
+                    </div>
+                    <div class="vehicle-price">$99<span class="price-period">/day</span></div>
+                    <a href="#" class="rent-btn">Rent Now</a>
+                </div>
+            </div>
+            
+            <!-- BMW 5 Series -->
+            <div class="vehicle-card">
+                <div class="vehicle-image" style="background-image: url('https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="vehicle-info">
+                    <h3>BMW 5 Series</h3>
+                    <div class="vehicle-details">
+                        <span>Automatic</span>
+                        <span>5 Seats</span>
+                    </div>
+                    <div class="vehicle-price">$129<span class="price-period">/day</span></div>
+                    <a href="#" class="rent-btn">Rent Now</a>
+                </div>
+            </div>
+            
+            <!-- Tesla Model 3 -->
+            <div class="vehicle-card">
+                <div class="vehicle-image" style="background-image: url('https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="vehicle-info">
+                    <h3>Tesla Model 3</h3>
+                    <div class="vehicle-details">
+                        <span>Automatic</span>
+                        <span>5 Seats</span>
+                    </div>
+                    <div class="vehicle-price">$149<span class="price-period">/day</span></div>
+                    <a href="#" class="rent-btn">Rent Now</a>
+                </div>
+            </div>
+            
+            <!-- Range Rover -->
+            <div class="vehicle-card">
+                <div class="vehicle-image" style="background-image: url('https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="vehicle-info">
+                    <h3>Range Rover</h3>
+                    <div class="vehicle-details">
+                        <span>Automatic</span>
+                        <span>7 Seats</span>
+                    </div>
+                    <div class="vehicle-price">$179<span class="price-period">/day</span></div>
+                    <a href="#" class="rent-btn">Rent Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
